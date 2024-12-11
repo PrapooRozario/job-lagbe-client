@@ -40,8 +40,8 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="text-xl font-poppins font-medium">
-          Job<span className='text-blue-500 font-bold'>Lagbe</span>
+        <a className="text-xl font-poppins font-bold">
+          <span className='text-blue-500 font-extrabold'>Job</span>Lagbe
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
