@@ -61,10 +61,10 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end gap-4">
-        <Link className="border-blue-500 font-medium border py-2 px-5 rounded-lg ">
+        <Link to='/auth/login' className="border-blue-500 font-medium border py-2 px-5 rounded-lg ">
           সাইন ইন
         </Link>
-        <Link className="bg-blue-500 text-white font-medium py-2 px-5 rounded-lg">
+        <Link to="/auth/register" className="bg-blue-500 text-white font-medium py-2 px-5 rounded-lg">
           শুরু করুন
         </Link>
       </div>
