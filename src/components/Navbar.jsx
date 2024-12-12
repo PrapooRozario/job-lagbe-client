@@ -1,7 +1,9 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthProvider";
 
 const Navbar = () => {
+  const { user, signOutAuth } = useContext(AuthContext);
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -41,7 +43,7 @@ const Navbar = () => {
           </ul>
         </div>
         <a className="text-xl font-poppins font-bold">
-          <span className='text-blue-500 font-extrabold'>Job</span>Lagbe
+          <span className="text-blue-500 font-extrabold">Job</span>Lagbe
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -61,12 +63,29 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end gap-4">
-        <Link to='/auth/login' className="border-blue-500 font-medium border py-2 px-5 rounded-lg ">
-          সাইন ইন
-        </Link>
-        <Link to="/auth/register" className="bg-blue-500 text-white font-medium py-2 px-5 rounded-lg">
-          শুরু করুন
-        </Link>
+        {user && user?.email ? (
+          <button
+            onClick={signOutAuth}
+            className="border-blue-500 font-medium border py-2 px-5 rounded-lg "
+          >
+            লগ আউট
+          </button>
+        ) : (
+          <div className="gap-4 flex">
+            <Link
+              to="/auth/login"
+              className="border-blue-500 font-medium border py-2 px-5 rounded-lg "
+            >
+              সাইন ইন
+            </Link>
+            <Link
+              to="/auth/register"
+              className="bg-blue-500 text-white font-medium py-2 px-5 rounded-lg"
+            >
+              শুরু করুন
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,11 +1,16 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthProvider";
 
 const Register = () => {
+  const { registerAuth, setUser } = useContext(AuthContext);
   const handleRegister = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
-      const password = e.target.password.value;
-      console.log(email, password)
+    const password = e.target.password.value;
+    registerAuth(email, password)
+      .then((user) => setUser(user.user))
+      .catch((error) => console.log(error));
   };
   return (
     <div className="hero mt-16">

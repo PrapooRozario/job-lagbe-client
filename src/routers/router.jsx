@@ -3,10 +3,15 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import AuthProvider from "../contexts/AuthProvider";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout></MainLayout>,
+    element: (
+      <AuthProvider>
+        <MainLayout></MainLayout>
+      </AuthProvider>
+    ),
     children: [
       {
         path: "/",

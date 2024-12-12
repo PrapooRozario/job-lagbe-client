@@ -1,11 +1,16 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthProvider";
 
 const Login = () => {
-    const handleLogin = (e) => {
+  const { signInAuth, setUser } = useContext(AuthContext);
+  const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    
+    signInAuth(email, password)
+      .then((user) => setUser(user.user))
+      .then((error) => console.log(error));
   };
   return (
     <div className="hero mt-16">
@@ -16,9 +21,9 @@ const Login = () => {
             <label className="label">
               <span className="label-text">ইমেইল</span>
             </label>
-                      <input
-                          type="email"
-                          name="email"
+            <input
+              type="email"
+              name="email"
               placeholder="আপনার ইমেইল দিন"
               className="input input-bordered"
               required
@@ -29,14 +34,14 @@ const Login = () => {
               <span className="label-text">পাসওয়ার্ড</span>
             </label>
             <input
-                          type="password"
-                          name="password"
+              type="password"
+              name="password"
               placeholder="আপনার পাসওয়ার্ড দিন"
               className="input input-bordered"
               required
             />
             <label className="mt-2">
-              পাসওয়ার্ড ভুলে গেছেন? {''}
+              পাসওয়ার্ড ভুলে গেছেন? {""}
               <Link
                 to="/auth/forgot-password"
                 href="/forgot-password"
