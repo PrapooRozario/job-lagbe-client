@@ -10,7 +10,7 @@ const Login = () => {
     const password = e.target.password.value;
     signInAuth(email, password)
       .then((user) => setUser(user.user))
-      .then((error) => console.log(error));
+      .catch((error) => console.log(error));
   };
   return (
     <div className="hero mt-16">
