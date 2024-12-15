@@ -1,8 +1,9 @@
-import { useLoaderData } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
 
 const JobDetails = () => {
   const loader = useLoaderData();
   const {
+    _id,
     title,
     location,
     jobType,
@@ -44,13 +45,15 @@ const JobDetails = () => {
         </div>
       </div>
       <div className="flex items-center gap-4">
-        {requirements.map((r) => (
-          <div className="bg-gray-200 px-4 rounded-full">{r}</div>
+        {requirements.map((r, idx) => (
+          <div key={idx} className="bg-gray-200 px-4 rounded-full">
+            {r}
+          </div>
         ))}
       </div>
       <div className="my-4">
-        {responsibilities.map((r) => (
-          <li>{r}</li>
+        {responsibilities.map((r, idx) => (
+          <li key={idx}>{r}</li>
         ))}
       </div>
       <div className="mt-4">
@@ -68,15 +71,20 @@ const JobDetails = () => {
         <div className="flex gap-4">
           <input
             value={hr_name}
-            class="w-fit bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+            class="bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-4 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
           />
-         
+
           <input
             value={hr_email}
-            class="w-fit bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+            class="bg-transparent w-fit placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-4 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
           />
         </div>
       </div>
+      <NavLink to={`/application/apply/${_id}`}>
+        <button className="font-hind-siliguri bg-blue-500 px-5 py-2 text-white rounded-lg mt-5">
+          আবেদন করুন
+        </button>
+      </NavLink>
     </div>
   );
 };
