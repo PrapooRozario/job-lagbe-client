@@ -8,7 +8,6 @@ const PrivateRoute = ({ children }) => {
   if (user && user?.email) {
     return children;
   }
-  console.log(location);
   return <Navigate to="/auth/login" state={location.pathname}></Navigate>;
 };
 

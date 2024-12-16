@@ -4,7 +4,7 @@ import { AuthContext } from "../contexts/AuthProvider";
 
 const Navbar = () => {
   const { user, signOutAuth } = useContext(AuthContext);
-  console.log(user)
+  console.log(user);
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -30,13 +30,13 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <Link>হোম</Link>
+              <Link to="/">হোম</Link>
             </li>
             <li>
-              <Link>চাকরি খুঁজুন</Link>
+              <Link to="/jobs/all">সকল চাকরি</Link>
             </li>
             <li>
-              <Link>নিয়োগকারী</Link>
+              <Link to="/applications/me">আমার আবেদনসমূহ</Link>
             </li>
             <li>
               <Link>যোগাযোগ</Link>
@@ -50,13 +50,13 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu *:text-base menu-horizontal px-1">
           <li>
-            <Link>হোম</Link>
+            <Link to="/">হোম</Link>
           </li>
           <li>
-            <Link>চাকরি খুঁজুন</Link>
+            <Link to="/jobs/all">সকল চাকরি</Link>
           </li>
           <li>
-            <Link>নিয়োগকারী</Link>
+            <Link to="/applications/me">আমার আবেদনসমূহ</Link>
           </li>
           <li>
             <Link>যোগাযোগ</Link>

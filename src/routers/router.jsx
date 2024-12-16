@@ -8,6 +8,8 @@ import JobDetails from "../pages/JobDetails";
 import axios from "axios";
 import JobApplication from "../pages/JobApplication";
 import PrivateRoute from "./PrivateRoute";
+import MyApplications from "../pages/MyApplications";
+import AllJobs from "../pages/AllJobs";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -48,6 +50,15 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_JOB_API}/jobs/${params.id}`),
+      },
+      {
+        path: "/applications/me",
+        element: <MyApplications></MyApplications>,
+      },
+      {
+        path: "/jobs/all",
+        element: <AllJobs></AllJobs>,
+        loader: () => fetch(`${import.meta.env.VITE_JOB_API}/jobs`),
       },
     ],
   },

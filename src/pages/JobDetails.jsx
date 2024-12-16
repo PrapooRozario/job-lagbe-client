@@ -1,7 +1,6 @@
 import { NavLink, useLoaderData } from "react-router-dom";
 
 const JobDetails = () => {
-  const loader = useLoaderData();
   const {
     _id,
     title,
@@ -17,7 +16,7 @@ const JobDetails = () => {
     hr_email,
     hr_name,
     company_logo,
-  } = loader;
+  } = useLoaderData();
   return (
     <div className="font-poppins">
       <h1 className="text-4xl font-semibold">{title}</h1>
